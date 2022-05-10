@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
 import Header from "./Header";
 import CharacterPage from "./CharacterPage";
 import GameField from "./GameField";
 import NewCharacterForm from "./NewCharacterForm";
 import HomePage from "./HomePage";
+import { Route } from "react-router-dom";
 
 const API = "http://localhost:3001/characters";
 
@@ -29,14 +29,25 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <HomePage />
-      <CharacterPage
-        characters={filteredItems}
-        search={search}
-        handleSearch={handleSearch}
-      />
-      <GameField />
-      <NewCharacterForm />
+      <Route exact path="/">
+        <HomePage />
+      </Route>
+
+      <Route path="/about">
+        <CharacterPage
+          characters={filteredItems}
+          search={search}
+          handleSearch={handleSearch}
+        />
+      </Route>
+
+      <Route path="/game">
+        <GameField />
+      </Route>
+
+      <Route path="/new">
+        <NewCharacterForm />
+      </Route>
     </div>
   );
 }
