@@ -23,6 +23,11 @@ function App() {
     setSearch(e.target.value);
   }
 
+  function handleAddCharacter(newCharacter) {
+    const updatedCharacterList = [...characters, newCharacter];
+    setCharacters(updatedCharacterList);
+  }
+
   const filteredItems = characters.filter((el) =>
     el.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -36,7 +41,7 @@ function App() {
         handleSearch={handleSearch}
       />
       <GameField />
-      <NewCharacterForm />
+      <NewCharacterForm onAddCharacter={handleAddCharacter} />
     </div>
   );
 }
