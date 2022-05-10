@@ -5,7 +5,7 @@ import CharacterPage from "./CharacterPage";
 import GameField from "./GameField";
 import NewCharacterForm from "./NewCharacterForm";
 import HomePage from "./HomePage";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 const API = "http://localhost:3001/characters";
 
@@ -34,33 +34,27 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <HomePage />
-      <CharacterPage
-        characters={filteredItems}
-        search={search}
-        handleSearch={handleSearch}
-      />
-      <GameField />
-      <NewCharacterForm/>
-      <Route exact path="/">
-        <HomePage />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <HomePage />
+        </Route>
 
-      <Route path="/about">
-        <CharacterPage
-          characters={filteredItems}
-          search={search}
-          handleSearch={handleSearch}
-        />
-      </Route>
+        <Route path="/about">
+          <CharacterPage
+            characters={filteredItems}
+            search={search}
+            handleSearch={handleSearch}
+          />
+        </Route>
 
-      <Route path="/game">
-        <GameField />
-      </Route>
+        <Route path="/game">
+          <GameField characters={characters} />
+        </Route>
 
-      <Route path="/new">
-        <NewCharacterForm />
-      </Route>
+        <Route path="/new">
+          <NewCharacterForm />
+        </Route>
+      </Switch>
     </div>
   );
 }
