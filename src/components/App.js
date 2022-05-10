@@ -23,12 +23,25 @@ function App() {
     setSearch(e.target.value);
   }
 
+  function handleAddCharacter(newCharacter) {
+    const updatedCharacterList = [...characters, newCharacter];
+    setCharacters(updatedCharacterList);
+  }
+
   const filteredItems = characters.filter((el) =>
     el.name.toLowerCase().includes(search.toLowerCase())
   );
   return (
     <div className="App">
       <Header />
+      <HomePage />
+      <CharacterPage
+        characters={filteredItems}
+        search={search}
+        handleSearch={handleSearch}
+      />
+      <GameField />
+      <NewCharacterForm/>
       <Route exact path="/">
         <HomePage />
       </Route>
