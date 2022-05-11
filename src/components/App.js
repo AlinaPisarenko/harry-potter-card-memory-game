@@ -11,12 +11,16 @@ const API = "http://localhost:3001/characters";
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [newCharacterArray, setNewCharacterArray] = useState([]);
   const [search, setSearch] = useState("");
+  const [selectedHouse, setSelectedHouse] = useState("hogwarts");
 
   useEffect(() => {
     fetch(API)
       .then((r) => r.json())
-      .then((data) => setCharacters(data));
+      .then((data) => {
+        setCharacters(data);
+      });
   }, []);
 
   function handleSearch(e) {
@@ -28,9 +32,25 @@ function App() {
     setCharacters(updatedCharacterList);
   }
 
-  const filteredItems = characters.filter((el) =>
-    el.name.toLowerCase().includes(search.toLowerCase())
-  );
+  function handleHouse(e) {
+    setSelectedHouse(e.target.alt);
+  }
+
+  useEffect(() => {
+    let filterArray = characters.filter((el) =>
+      el.name.toLowerCase().includes(search.toLowerCase())
+    );
+    selectedHouse === "hogwarts"
+      ? setNewCharacterArray(filterArray)
+      : setNewCharacterArray(filteredHouse(filterArray));
+  }, [characters, search, selectedHouse]);
+
+  function filteredHouse(someCharacters) {
+    return someCharacters.filter(
+      (character) => character.house === selectedHouse
+    );
+  }
+
   return (
     <div className="App">
       <Header />
@@ -41,9 +61,11 @@ function App() {
 
         <Route path="/about">
           <CharacterPage
-            characters={filteredItems}
+            characters={newCharacterArray}
             search={search}
             handleSearch={handleSearch}
+            // onFilteredHouse={filteredHouse}
+            handleHouse={handleHouse}
           />
         </Route>
 
@@ -52,7 +74,7 @@ function App() {
         </Route>
 
         <Route path="/new">
-          <NewCharacterForm />
+          <NewCharacterForm onAddCharacter={handleAddCharacter} />
         </Route>
       </Switch>
     </div>

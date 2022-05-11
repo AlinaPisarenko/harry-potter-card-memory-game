@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({ search, handleSearch }) {
+function SearchBar({ search, handleSearch, onFilteredHouse, handleHouse }) {
   return (
     <>
       <div className="input-group mb-3">
@@ -21,7 +21,21 @@ function SearchBar({ search, handleSearch }) {
           Button
         </button>
       </div>
-      <img className="logo" src="slytherin.png" />
+      <button onClick={handleHouse} className="house-button">
+        <img className="logo" alt="hogwarts" src="hogwarts.png" />
+      </button>
+      <button onClick={handleHouse} className="house-button">
+        <img className="logo" alt="Slytherin" src="slytherin.png" />
+      </button>
+      <button onClick={handleHouse} className="house-button">
+        <img className="logo" alt="Gryffindor" src="gryffindor.png" />
+      </button>
+      <button onClick={handleHouse} className="house-button">
+        <img className="logo" alt="Hufflepuff" src="hufflepuff.png" />
+      </button>
+      <button onClick={handleHouse} className="house-button">
+        <img className="logo" alt="Ravenclaw" src="ravenclaw.png" />
+      </button>
     </>
   );
 }
