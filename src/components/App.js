@@ -6,6 +6,7 @@ import GameField from "./GameField";
 import NewCharacterForm from "./NewCharacterForm";
 import HomePage from "./HomePage";
 import { Route, Switch } from "react-router-dom";
+import Scores from "./Scores";
 
 const API = "http://localhost:3001/characters";
 
@@ -31,6 +32,7 @@ function App() {
   const filteredItems = characters.filter((el) =>
     el.name.toLowerCase().includes(search.toLowerCase())
   );
+
   return (
     <div className="App">
       <Header />
@@ -53,6 +55,10 @@ function App() {
 
         <Route path="/new">
           <NewCharacterForm />
+        </Route>
+
+        <Route path="/score">
+          <Scores />
         </Route>
       </Switch>
     </div>

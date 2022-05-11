@@ -1,3 +1,9 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
 .App {
   text-align: center;
 }
@@ -58,10 +64,10 @@
 }
 
 .container {
-  width: 500px;
+  width: 400px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   justify-items: center;
   align-items: stretch;
   gap: 1rem;
@@ -75,10 +81,40 @@
 .card-game {
   width: 100%;
   height: 100px;
+  position: relative;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  cursor: pointer;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
   border-radius: 4px;
   box-shadow: 2px 2px 4px 4px #dedede;
-  transition: 0.3s;
-  transform-style: preserve-3d;
-  position: relative;
-  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.is-inactive {
+  opacity: 100%;
+  cursor: default;
+}
+.score-list {
+  margin: 0 auto;
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
 }

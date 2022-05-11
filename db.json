@@ -793,5 +793,49 @@
       "patronus": "",
       "image": "https://static.wikia.nocookie.net/harrypotter/images/5/54/Xenophilius_Lovegood_Promo_Shot.jpg"
     }
+  ],
+  "players": [
+    {
+      "id": 1,
+      "firstName": "Alina",
+      "score": 5
+    },
+    {
+      "id": 2,
+      "firstName": "Kaven",
+      "score": 4
+    },
+    {
+      "firstName": "Lena",
+      "score": 6,
+      "id": 3
+    },
+    {
+      "firstName": "Joe",
+      "score": 4,
+      "id": 4
+    },
+    {
+      "firstName": "Sean",
+      "score": 6,
+      "id": 5
+    },
+    {
+      "firstName": "Logan",
+      "score": 3,
+      "id": 6
+    },
+    {
+      "firstName": "Hello",
+      "score": 8,
+      "level": false,
+      "id": 7
+    },
+    {
+      "firstName": "rrr",
+      "score": 8,
+      "level": false,
+      "id": 8
+    }
   ]
 }

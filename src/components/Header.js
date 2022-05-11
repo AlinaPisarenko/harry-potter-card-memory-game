@@ -8,12 +8,12 @@ function Header() {
     <Nav variant="tabs" defaultActiveKey="/home">
       <Nav.Item>
         <LinkContainer to="/" exact>
-          <Nav.Link href="/home">Active</Nav.Link>
+          <Nav.Link href="/home">Home</Nav.Link>
         </LinkContainer>
       </Nav.Item>
       <Nav.Item>
         <LinkContainer to="/about" exact>
-          <Nav.Link eventKey="link-1">About</Nav.Link>
+          <Nav.Link eventKey="link-1">Characters</Nav.Link>
         </LinkContainer>
       </Nav.Item>
       <Nav.Item>
@@ -24,6 +24,11 @@ function Header() {
       <Nav.Item>
         <LinkContainer to="/new" exact>
           <Nav.Link eventKey="link-3">New Character</Nav.Link>
+        </LinkContainer>
+      </Nav.Item>
+      <Nav.Item>
+        <LinkContainer to="/score" exact>
+          <Nav.Link eventKey="link-4">Scores</Nav.Link>
         </LinkContainer>
       </Nav.Item>
     </Nav>
