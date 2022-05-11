@@ -6,6 +6,7 @@ import GameField from "./GameField";
 import NewCharacterForm from "./NewCharacterForm";
 import HomePage from "./HomePage";
 import { Route, Switch } from "react-router-dom";
+import Scores from "./Scores";
 
 const API = "http://localhost:3001/characters";
 
@@ -32,6 +33,7 @@ function App() {
     setCharacters(updatedCharacterList);
   }
 
+
   function handleHouse(e) {
     setSelectedHouse(e.target.alt);
   }
@@ -50,6 +52,7 @@ function App() {
       (character) => character.house === selectedHouse
     );
   }
+
 
   return (
     <div className="App">
@@ -75,6 +78,10 @@ function App() {
 
         <Route path="/new">
           <NewCharacterForm onAddCharacter={handleAddCharacter} />
+        </Route>
+
+        <Route path="/score">
+          <Scores />
         </Route>
       </Switch>
     </div>
