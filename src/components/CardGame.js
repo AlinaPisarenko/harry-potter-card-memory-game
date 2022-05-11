@@ -1,18 +1,25 @@
 import React from "react";
 
-function CardGame({ onClick, card, index, isInactive, isFlipped, isDisabled }) {
+function CardGame({ onClick, card, index, isInactive, isFlipped }) {
   const handleClick = () => {
-    !isFlipped && !isDisabled && onClick(index);
+    !isFlipped && onClick(index);
   };
 
   return (
     <div className="card-game" onClick={handleClick}>
-      {/* <div className="card-face card-font-face">
-        <img src="hogwartslogo.png" alt="hogwarts" />
-      </div> */}
-      {/* <div className="card-face card-back-face"> */}
-      <img src={card.image} alt={card.name} />
-      {/* </div> */}
+      <div className="flip-card-inner">
+        {!isFlipped && !isInactive ? (
+          <div className="flip-card-front">
+            <img src="hogwartslogo.png" alt="hogwarts" />
+          </div>
+        ) : isInactive ? (
+          <div className="is-inactive"></div>
+        ) : (
+          <div className="flip-card-back">
+            <img src={card.image} alt={card.name} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
