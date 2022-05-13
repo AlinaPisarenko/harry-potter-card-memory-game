@@ -804,6 +804,18 @@
         "length": "11"
       },
       "id": 62
+    },
+    {
+      "name": "Dobby",
+      "house": "Gryffindor",
+      "patronus": "Sock",
+      "image": "https://static.wikia.nocookie.net/harrypotter/images/8/82/Dobby.jpg",
+      "wand": {
+        "wood": "Pine",
+        "core": "Phoenix feather",
+        "length": "10"
+      },
+      "id": 63
     }
   ],
   "players": [
