@@ -5,17 +5,12 @@ import Player from "./Player";
 function Scores() {
   const [players, setPlayers] = useState([]);
 
+  //getting scores data
   useEffect(() => {
     fetch("http://localhost:3001/players")
       .then((r) => r.json())
       .then((data) => setPlayers(data));
   }, []);
-
-  // useEffect(() => {
-  //   fetch("http://localhost:3001/advanced-players")
-  //     .then((r) => r.json())
-  //     .then((data) => setPlayers(data));
-  // }, []);
 
   const eachPlayer = players
     .map((el) => <Player key={el.id} player={el} />)
@@ -24,13 +19,9 @@ function Scores() {
   return (
     <>
       <div>
-        <h1>Best scores</h1>
+        <h3 className="page-title">Best scores</h3>
         {eachPlayer}
       </div>
-      {/* <div>
-        <h1>Best scores</h1>
-        {eachPlayer}
-      </div> */}
     </>
   );
 }

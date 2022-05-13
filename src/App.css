@@ -5,82 +5,66 @@ body {
 }
 
 .App {
+  color: #fff;
   text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: "Fredericka the Great", cursive;
+  background-image: url(../public/black-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-.card {
-  margin: 1rem;
 }
 
-.card img {
+.color-nav {
+  background-color: #000;
+}
+
+.nav-link {
+  font-size: 4vh;
+}
+
+.home-page {
+  color: #fff;
+  background-size: cover;
+  height: 100vh;
+  background-image: url(../public/wallpaper.jpg);
+  background-color: black;
+}
+
+.home-page h1 {
+  font-size: 10vh;
+}
+
+.home-page img {
+  padding-top: 160px;
+  width: 90vh;
+}
+
+.image-list {
   width: 100%;
+  height: 54%;
 }
 
-.card button {
-  margin-top: 0.5rem;
-}
-
-@media (min-width: 768px) {
-  .cards {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .card {
-    width: calc(20% - 2rem);
-  }
-
-  .card img {
-    height: 180px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .card {
-    width: calc(25% - 2rem);
-  }
-}
-
-@media (min-width: 1200px) {
-  .card {
-    width: calc(15% - 2rem);
-  }
-}
-.cards {
-  list-style: none;
-}
-.logo {
-  max-width: 140px;
-}
-
-.container {
-  width: 400px;
+.game-container {
+  margin: 0 auto;
+  width: 80vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   align-items: stretch;
   gap: 1rem;
 }
 
-.container img {
-  height: 95%;
+.game-container img {
+  height: 100%;
   width: 95%;
 }
 
 .card-game {
   width: 100%;
-  height: 100px;
+  height: 24vh;
   position: relative;
 }
 
@@ -120,10 +104,11 @@ body {
 }
 
 .house-button {
+  padding-top: 3vh;
+  width: 16vh;
   background-color: transparent;
   border-style: none;
   justify-content: center;
-  margin-left: 20px;
 }
 
 .house-button:first-of-type {
@@ -135,8 +120,155 @@ body {
 }
 
 .house-button img {
+  width: 100%;
+  height: 18vh;
+  object-fit: cover;
+}
+
+.moves {
+  font-size: 48px;
+  text-align: right;
+}
+
+.btn {
+  margin-left: 80px;
+  margin-top: 6px;
   float: left;
-  width:  100px;
-  height: 100px;
-  object-fit: scale-down;
+  width: 120px;
+  height: 50px;
+  font-size: 26px;
+  color: #fff;
+  border-color: #fff;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.page-title {
+  padding-top: 2vh;
+  font-size: 9vh;
+}
+
+.footer-game {
+  padding-top: 30px;
+}
+
+.logo-nav {
+  margin-left: 3vh;
+  width: 8vh;
+  height: 8vh;
+}
+
+.description {
+  font-size: 28px;
+}
+.new-form {
+  margin: 0 auto;
+  padding-top: 5vh;
+  width: 50%;
+}
+
+.form-label {
+  font-size: 5vh;
+}
+
+.btn-form {
+  margin: 0 auto;
+  width: 100%;
+  height: 50px;
+  font-size: 26px;
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+.btn-form:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.btn-form:focus {
+  color: #fff;
+  border-color: #fff;
+  background-color: transparent;
+}
+
+.score-page {
+  font-size: 40px;
+}
+
+.char-name {
+  font-size: 5vh;
+}
+
+.char-description {
+  font-size: 3.5vh;
+}
+
+.char-description-detail {
+  margin-top: -1vh;
+  font-size: 2.9vh;
+}
+
+.search-form {
+  background-color: rgba(255, 255, 255, 0.557);
+  color: #fff;
+}
+
+.search-input {
+  padding-top: 3vh;
+  margin: 0 auto;
+  width: 42%;
+}
+
+.play-game {
+  display: flex;
+}
+
+.homepage h1:hover {
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.sound-btn {
+  margin-right: 5vh;
+  font-size: 5vh;
+  color: rgba(255, 255, 255, 0.724);
+}
+
+.sound-btn-off {
+  margin-right: 5vh;
+  font-size: 5vh;
+  color: rgba(255, 255, 255, 0.308);
+}
+
+.sound {
+  background-color: transparent;
+  border: none;
+}
+
+.modal-image {
+  height: 32vh;
+}
+
+.wand-new {
+  list-style: none;
+  margin-left: -3vh;
+}
+
+.modal-comp .modal-content {
+  background-color: rgba(0, 0, 0, 0.805);
+  color: #fff;
+  font-family: "Fredericka the Great", cursive;
+}
+
+.btn-remove {
+  margin-left: 0vh;
+  width: 35vh;
+}
+
+.play-home-btn {
+  cursor: pointer;
 }

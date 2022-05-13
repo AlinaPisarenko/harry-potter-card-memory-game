@@ -4,8 +4,8 @@ function Player({ player }) {
   const { firstName, score } = player;
   return (
     <div className="score-list">
-      <span>{firstName}</span>
-      <span>{score} moves</span>
+      <span className="score-page">{firstName}</span>
+      <span className="score-page">{score} moves</span>
     </div>
   );
 }

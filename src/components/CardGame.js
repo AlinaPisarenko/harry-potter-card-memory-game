@@ -1,6 +1,7 @@
 import React from "react";
 
 function CardGame({ onClick, card, index, isInactive, isFlipped }) {
+  //function handles click on each card event
   const handleClick = () => {
     !isFlipped && onClick(index);
   };
