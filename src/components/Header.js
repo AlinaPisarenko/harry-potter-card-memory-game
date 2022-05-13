@@ -1,37 +1,66 @@
-import React from "react";
-import { Nav } from "react-bootstrap";
-
+import React, { useState, useEffect } from "react";
+import { Nav, Navbar } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeOff } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
+  //adding an audio file
+  const useAudio = (url) => {
+    const [audio] = useState(new Audio(url));
+    const [playing, setPlaying] = useState(false);
+
+    const toggle = () => setPlaying(!playing);
+
+    useEffect(() => {
+      playing ? audio.play() : audio.pause();
+    }, [playing]);
+
+    useEffect(() => {
+      audio.addEventListener("ended", () => setPlaying(false));
+      return () => {
+        audio.removeEventListener("ended", () => setPlaying(false));
+      };
+    }, []);
+
+    return [playing, toggle];
+  };
+
+  const [playing, toggle] = useAudio("ThemeSong.mp3");
+
   return (
-    <Nav variant="tabs" defaultActiveKey="/home">
-      <Nav.Item>
+    //setting up navbar using router and bootstrap
+    <Navbar bg="black" variant="dark">
+      <Navbar.Brand href="#home">
+        <img className="logo-nav" src="hp-logo-3.png" />
+      </Navbar.Brand>
+      <Nav className="me-auto">
         <LinkContainer to="/" exact>
-          <Nav.Link href="/home">Home</Nav.Link>
+          <Nav.Link href="/home">Home | </Nav.Link>
         </LinkContainer>
-      </Nav.Item>
-      <Nav.Item>
+
         <LinkContainer to="/about" exact>
-          <Nav.Link eventKey="link-1">Characters</Nav.Link>
+          <Nav.Link eventKey="link-1">Characters | </Nav.Link>
         </LinkContainer>
-      </Nav.Item>
-      <Nav.Item>
+
         <LinkContainer to="/game" exact>
-          <Nav.Link eventKey="link-2">Game</Nav.Link>
+          <Nav.Link eventKey="link-2">Game | </Nav.Link>
         </LinkContainer>
-      </Nav.Item>
-      <Nav.Item>
+
         <LinkContainer to="/new" exact>
-          <Nav.Link eventKey="link-3">New Character</Nav.Link>
+          <Nav.Link eventKey="link-3">New Character | </Nav.Link>
         </LinkContainer>
-      </Nav.Item>
-      <Nav.Item>
+
         <LinkContainer to="/score" exact>
           <Nav.Link eventKey="link-4">Scores</Nav.Link>
         </LinkContainer>
-      </Nav.Item>
-    </Nav>
+      </Nav>
+      <button className="sound" onClick={toggle}>
+        <div className={playing ? "sound-btn" : "sound-btn-off"}>
+          <FontAwesomeIcon icon={faVolumeOff} />
+        </div>
+      </button>
+    </Navbar>
   );
 }
 

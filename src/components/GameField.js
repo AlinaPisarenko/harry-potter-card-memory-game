@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import CardGame from "./CardGame";
 import ModalComponent from "./ModalComponent";
-import { Button, DropdownButton, Dropdown } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 function GameField({ characters }) {
+  //  //defining all the states
   const [openCards, setOpenCards] = useState([]);
   const [clearedCards, setClearedCards] = useState({});
   const [moves, setMoves] = useState(0);
@@ -11,15 +12,15 @@ function GameField({ characters }) {
   const [showModal, setShowModal] = useState(false);
   const [level, setLevel] = useState(false);
 
+  //getting  6 random objects from an array
   const mix = characters.sort(() => 0.5 - Math.random());
-  const [cardsArray, setCardsArray] = useState(mix.slice(0, 4));
-  // Get sub-array of first n elements after cardsArray
+  const [cardsArray, setCardsArray] = useState(mix.slice(0, 6));
 
+  //doubling amount of cards
   const [cards, setCards] = useState(() =>
     shuffleCards(cardsArray.concat(cardsArray))
   );
 
-  console.log(cards);
   //setting timeout if 2 card are open but not matching
   useEffect(() => {
     let timeout = null;
@@ -31,24 +32,12 @@ function GameField({ characters }) {
     };
   }, [openCards]);
 
+  //checking if all the cards are flipped
   useEffect(() => {
     checkCompletion();
   }, [clearedCards]);
 
-  const evaluate = () => {
-    const [first, second] = openCards;
-
-    if (cards[first].id === cards[second].id) {
-      setClearedCards((prev) => ({ ...prev, [cards[first].id]: true }));
-      setOpenCards([]);
-      return;
-    }
-    timeout.current = setTimeout(() => {
-      setOpenCards([]);
-    }, 500);
-  };
-
-  // Fisher Yates Shuffle
+  // using Fisher Yates Shuffle to shuffle objects
   function swap(array, i, j) {
     const temp = array[i];
     array[i] = array[j];
@@ -64,6 +53,21 @@ function GameField({ characters }) {
     return array;
   }
 
+  //comparing two cards and if they match we are excluding them from the game
+  const evaluate = () => {
+    const [first, second] = openCards;
+    if (cards[first].id === cards[second].id) {
+      setClearedCards((prev) => ({ ...prev, [cards[first].id]: true }));
+      setOpenCards([]);
+      return;
+    }
+    timeout.current = setTimeout(() => {
+      setOpenCards([]);
+    }, 500);
+  };
+
+  //function that handles every click on the card
+  //increasing moves
   const handleCardClick = (index) => {
     if (openCards.length === 1) {
       setOpenCards((prev) => [...prev, index]);
@@ -76,17 +80,18 @@ function GameField({ characters }) {
     }
   };
 
+  //checking if the card is flipped on the Dom to assign an appropriate className
   const checkIsFlipped = (index) => {
     return openCards.includes(index);
   };
 
+  //
   const checkIsInactive = (card) => {
     return Boolean(clearedCards[card.id]);
   };
 
+  //checking the completion of the game
   const checkCompletion = () => {
-    // We are storing clearedCards as an object since its more efficient
-    //to search in an object instead of an array
     if (
       Object.keys(clearedCards).length === cardsArray.length &&
       Object.keys(clearedCards).length >= 1
@@ -101,32 +106,18 @@ function GameField({ characters }) {
     setOpenCards([]);
     setShowModal(false);
     setMoves(0);
-    setCardsArray(mix.slice(0, 4));
+    setCardsArray(mix.slice(0, 6));
     setCards(shuffleCards(cardsArray.concat(cardsArray)));
   };
-
-  // function changeLevel() {
-  //   setLevel(!level);
-
-  //   setClearedCards({});
-  //   setOpenCards([]);
-  //   setShowModal(false);
-  //   setMoves(0);
-  //   if (level === false) {
-  //     setCardsArray(mix.slice(0, 8));
-  //   } else {
-  //     setCardsArray(mix.slice(0, 4));
-  //   }
-  //   setCards(shuffleCards(cardsArray.concat(cardsArray)));
-  // }
 
   return (
     <div className="App">
       <header>
-        <h3>GAME</h3>
-        <div>Try to find two matching cards</div>
+        <h3 className="page-title">GAME</h3>
+        <p className="description">FIND TWO MATCHING CARDS</p>
       </header>
-      <div className="container">
+      <div className="game-container">
+        {/* mapping through all the cards to display each one of them */}
         {cards.map((card, index) => {
           return (
             <CardGame
@@ -140,17 +131,26 @@ function GameField({ characters }) {
           );
         })}
       </div>
-      <p>Moves: {moves}</p>
-      <Button onClick={handleRestart} color="primary" variant="outline-primary">
-        Restart
-      </Button>
-      {/* <Button onClick={changeLevel} color="primary" variant="outline-primary">
-        Advanced
-      </Button> */}
-      {/* <Button onClick={changeLevel} color="primary" variant="outline-primary">
-        Beginner
-      </Button> */}
 
+      <Container className="footer-game">
+        <Row>
+          <Col sm={6}>
+            <h4 className="moves">MOVES: {moves}</h4>
+          </Col>
+
+          <Col sm={6}>
+            <Button
+              onClick={handleRestart}
+              color="primary"
+              variant="outline-primary"
+              className="btn"
+            >
+              Restart
+            </Button>
+          </Col>
+        </Row>
+      </Container>
+      {/* {setting ternary operator for displayin the modal } */}
       {showModal ? (
         <ModalComponent
           showModal={showModal}

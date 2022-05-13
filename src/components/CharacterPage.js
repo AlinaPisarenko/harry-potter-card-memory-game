@@ -8,6 +8,7 @@ function CharacterPage({
   handleSearch,
   onFilteredHouse,
   handleHouse,
+  onDelete,
 }) {
   return (
     <>
@@ -18,7 +19,7 @@ function CharacterPage({
         characters={characters}
         handleHouse={handleHouse}
       />
-      <CharacterList characters={characters} />
+      <CharacterList characters={characters} onDelete={onDelete} />
     </>
   );
 }

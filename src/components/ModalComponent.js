@@ -7,24 +7,24 @@ function ModalComponent({ moves, handleRestart, level }) {
     firstName: "",
   });
 
-  console.log(level);
-
+  //closing modal
   function handleClose() {
     setShow(false);
     handleRestart();
   }
 
+  //submiting new score
   function handleSubmit() {
     setShow(false);
 
+    //creating an object for a new player
     const newPlayer = {
       firstName: form.firstName,
       score: moves,
       level: level,
     };
-    const pl = "players";
-    const ad = "advanced-players";
 
+    //sending data to database
     fetch("http://localhost:3001/players", {
       method: "POST",
       headers: {
@@ -33,21 +33,23 @@ function ModalComponent({ moves, handleRestart, level }) {
       body: JSON.stringify(newPlayer),
     }).then((r) => r.json());
 
+    //restarting form
     setForm({
       firstName: "",
     });
     handleRestart();
   }
 
+  //keeping track of the input
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} className="modal-comp">
         <Modal.Header closeButton>
-          <Modal.Title>Congrats!</Modal.Title>
+          <Modal.Title>You are a Wizard!</Modal.Title>
         </Modal.Header>
         <Modal.Body>You completed the game in {moves} moves</Modal.Body>
         <Form>
@@ -68,7 +70,7 @@ function ModalComponent({ moves, handleRestart, level }) {
             Restart
           </Button>
           <Button
-            variant="primary"
+            variant="secondary"
             onClick={handleSubmit}
             onKeyDown={handleSubmit}
           >

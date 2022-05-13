@@ -726,7 +726,7 @@
         "length": ""
       },
       "patronus": "",
-      "image": "https://static.wikia.nocookie.net/harrypotter/images/3/37/Penelope_Clearwater_COSF.jpg"
+      "image": "https://static.wikia.nocookie.net/harrypotter/images/4/4b/Flitwickarmourbattle.png"
     },
     {
       "id": 57,
@@ -792,50 +792,44 @@
       },
       "patronus": "",
       "image": "https://static.wikia.nocookie.net/harrypotter/images/5/54/Xenophilius_Lovegood_Promo_Shot.jpg"
+    },
+    {
+      "name": "Elena",
+      "house": "Gryffindor",
+      "patronus": "Owl",
+      "image": "http://pm1.narvii.com/7852/cb999962c5dcf28427c9a553e3f24f1919ab977er1-360-450v2_00.jpg",
+      "wand": {
+        "wood": "Pine",
+        "core": "Dragon Tooth",
+        "length": "11"
+      },
+      "id": 62
     }
   ],
   "players": [
     {
-      "id": 1,
-      "firstName": "Alina",
-      "score": 5
-    },
-    {
-      "id": 2,
       "firstName": "Kaven",
-      "score": 4
+      "score": 11,
+      "level": false,
+      "id": 2
     },
     {
-      "firstName": "Lena",
-      "score": 6,
+      "firstName": "Will",
+      "score": 9,
+      "level": false,
       "id": 3
     },
     {
-      "firstName": "Joe",
-      "score": 4,
+      "firstName": "Alina",
+      "score": 11,
+      "level": false,
       "id": 4
     },
     {
-      "firstName": "Sean",
-      "score": 6,
+      "firstName": "Karl",
+      "score": 13,
+      "level": false,
       "id": 5
-    },
-    {
-      "firstName": "Logan",
-      "score": 3,
-      "id": 6
-    },
-    {
-      "firstName": "Hello",
-      "score": 8,
-      "level": false,
-      "id": 7
-    },
-    {
-      "firstName": "rrr",
-      "score": 8,
-      "level": false,
-      "id": 8
     }
   ]
 }

@@ -7,15 +7,20 @@ import NewCharacterForm from "./NewCharacterForm";
 import HomePage from "./HomePage";
 import { Route, Switch } from "react-router-dom";
 import Scores from "./Scores";
+import ModalNewCharacter from "./ModalNewCharacter";
 
 const API = "http://localhost:3001/characters";
 
 function App() {
+  //defining all the states
   const [characters, setCharacters] = useState([]);
   const [newCharacterArray, setNewCharacterArray] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedHouse, setSelectedHouse] = useState("hogwarts");
+  const [showModal, setShowModal] = useState(false);
+  const [newWizard, setNewWizard] = useState({});
 
+  //getting data from db.json
   useEffect(() => {
     fetch(API)
       .then((r) => r.json())
@@ -24,20 +29,26 @@ function App() {
       });
   }, []);
 
+  //assigning the state to use fo a search by name form
   function handleSearch(e) {
     setSearch(e.target.value);
   }
 
+  //adding new character
+  //closing the modal that displayed a new character
   function handleAddCharacter(newCharacter) {
+    setNewWizard(newCharacter);
+    setShowModal(!showModal);
     const updatedCharacterList = [...characters, newCharacter];
     setCharacters(updatedCharacterList);
   }
 
-
+  //assigning the state to use fo a filter by the house
   function handleHouse(e) {
     setSelectedHouse(e.target.alt);
   }
 
+  //handling search and filtering by the house
   useEffect(() => {
     let filterArray = characters.filter((el) =>
       el.name.toLowerCase().includes(search.toLowerCase())
@@ -53,6 +64,10 @@ function App() {
     );
   }
 
+  //deleting the character from the DOM
+  function onDelete(obj) {
+    setCharacters(characters.filter((el) => obj.id !== el.id));
+  }
 
   return (
     <div className="App">
@@ -67,13 +82,13 @@ function App() {
             characters={newCharacterArray}
             search={search}
             handleSearch={handleSearch}
-            // onFilteredHouse={filteredHouse}
             handleHouse={handleHouse}
+            onDelete={onDelete}
           />
         </Route>
 
         <Route path="/game">
-          <GameField characters={characters} />
+          <GameField characters={newCharacterArray} />
         </Route>
 
         <Route path="/new">
@@ -84,8 +99,18 @@ function App() {
           <Scores />
         </Route>
       </Switch>
+
+      {showModal ? (
+        <ModalNewCharacter
+          setShowModal={setShowModal}
+          showModal={showModal}
+          newWizard={newWizard}
+          setNewWizard={setNewWizard}
+        />
+      ) : null}
     </div>
   );
 }
 
 export default App;
+export { API };
