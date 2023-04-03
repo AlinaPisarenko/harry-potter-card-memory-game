@@ -17,31 +17,34 @@ function CharacterCard({ character, onDelete }) {
   }
 
   return (
-    <div style={{ height: "100%", width: "50vh", margin: "16px" }}>
+    <div style={{ height: "100%", width: "45vh", margin: "0px" }}>
       <Paper
         style={{
-          height: "80vh",
-          width: "35vh",
+          height: "38vh",
+          width: "30vh",
           background: "black",
           color: "white",
           border: "",
           border: "1px solid #BFBFBF",
           boxShadow: "2px 2px 5px  #BFBFBF",
+          position: "relative"
         }}
       >
         {" "}
         <img src={image} alt={name} className="image-list" />
-        <h5 className="char-name">{name}</h5>
-        <p className="char-description">{house}</p>
-        <p className="char-description-detail">
-          {patronus === "" ? null : ` Patronus: ${patronus}`}
-        </p>
-        <p className="char-description-detail">
-          {wand.wood === "" ? null : `Wand: `}
-          {wand.wood === "" ? null : `${wand.wood}, `}
-          {wand.length === "" ? null : `${wand.length} inch, `}
-          {wand.core === "" ? null : `${wand.core}, `}
-        </p>
+        <div className="info-div">
+          <h5 className="char-name">{name}</h5>
+          <p className="char-description">{house}</p>
+          <p className="char-description-detail">
+            {patronus === "" ? null : ` Patronus: ${patronus}`}
+          </p>
+          <p className="char-description-detail">
+            {wand.wood === "" ? null : `Wand: `}
+            {wand.wood === "" ? null : `${wand.wood}, `}
+            {wand.length === "" ? null : `${wand.length} inch, `}
+            {wand.core === "" ? null : `${wand.core}, `}
+          </p>
+        </div>
       </Paper>
       <Button
         onClick={handleRemove}

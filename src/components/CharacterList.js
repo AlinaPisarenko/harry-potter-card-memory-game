@@ -10,7 +10,7 @@ function CharacterList({ characters, onDelete }) {
   ));
 
   return (
-    <div style={{ width: "100%", overflow: "auto", display: "flex" }}>
+    <div style={{ width: "100%", overflow: "auto", display: "flex",gap: "1rem" }}>
       {map(range(1), (_) => eachCharacter)}
     </div>
   );

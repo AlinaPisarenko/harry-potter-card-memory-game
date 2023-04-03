@@ -9,7 +9,7 @@ import { Route, Switch } from "react-router-dom";
 import Scores from "./Scores";
 import ModalNewCharacter from "./ModalNewCharacter";
 
-const API = "http://localhost:3001/characters";
+const API = "http://localhost:3000/characters";
 
 function App() {
   //defining all the states

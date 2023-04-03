@@ -11,7 +11,7 @@ function CharacterPage({
   onDelete,
 }) {
   return (
-    <>
+    <div className="character-page">
       <SearchBar
         search={search}
         handleSearch={handleSearch}
@@ -20,7 +20,7 @@ function CharacterPage({
         handleHouse={handleHouse}
       />
       <CharacterList characters={characters} onDelete={onDelete} />
-    </>
+    </div>
   );
 }
 

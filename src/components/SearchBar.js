@@ -2,7 +2,7 @@ import React from "react";
 
 function SearchBar({ search, handleSearch, onFilteredHouse, handleHouse }) {
   return (
-    <>
+    <div>
       {/* returning buttons for all the houses */}
       <button onClick={handleHouse} className="house-button">
         <img className="logo" alt="hogwarts" src="hogwarts.png" />
@@ -30,7 +30,7 @@ function SearchBar({ search, handleSearch, onFilteredHouse, handleHouse }) {
           value={search}
         />
       </div>
-    </>
+    </div>
   );
 }
 

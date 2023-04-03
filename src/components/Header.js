@@ -30,7 +30,7 @@ function Header() {
 
   return (
     //setting up navbar using router and bootstrap
-    <Navbar bg="black" variant="dark">
+    <Navbar id="navigation" bg="black" variant="dark">
       <Navbar.Brand href="#home">
         <img className="logo-nav" src="hp-logo-3.png" />
       </Navbar.Brand>
@@ -65,42 +65,3 @@ function Header() {
 }
 
 export default Header;
-
-// const linkStyles = {
-//   textDecoration: "none",
-// };
-// return (
-//   <Nav variant="tabs" defaultActiveKey="/">
-//     <Nav.Item>
-//       <Nav.Link href="/" to="/" exact style={linkStyles}>
-//         <NavLink to="/" exact style={linkStyles}>
-//           Home
-//         </NavLink>
-//       </Nav.Link>
-//     </Nav.Item>
-
-//     <Nav.Item>
-//       <Nav.Link eventKey="link-1">
-//         <NavLink to="/about" exact style={linkStyles}>
-//           About
-//         </NavLink>
-//       </Nav.Link>
-//     </Nav.Item>
-
-//     <Nav.Item>
-//       <Nav.Link eventKey="link-2">
-//         <NavLink to="/game" exact style={linkStyles}>
-//           Game
-//         </NavLink>
-//       </Nav.Link>
-//     </Nav.Item>
-
-//     <Nav.Item>
-//       <Nav.Link eventKey="link-3">
-//         <NavLink to="/new" exact style={linkStyles}>
-//           New Character
-//         </NavLink>
-//       </Nav.Link>
-//     </Nav.Item>
-//   </Nav>
-// );
