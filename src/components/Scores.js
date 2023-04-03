@@ -7,7 +7,7 @@ function Scores() {
 
   //getting scores data
   useEffect(() => {
-    fetch("http://localhost:3001/players")
+    fetch(`${process.env.REACT_APP_API_URL}/players`)
       .then((r) => r.json())
       .then((data) => setPlayers(data));
   }, []);
@@ -15,7 +15,7 @@ function Scores() {
   const eachPlayer = players
     .map((el) => <Player key={el.id} player={el} />)
     .sort((a, b) => a.props.player.score - b.props.player.score);
-
+console.log(players)
   return (
     <>
       <div>

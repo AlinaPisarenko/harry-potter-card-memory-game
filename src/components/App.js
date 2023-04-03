@@ -9,8 +9,8 @@ import { Route, Switch } from "react-router-dom";
 import Scores from "./Scores";
 import ModalNewCharacter from "./ModalNewCharacter";
 
-const API = "http://localhost:3000/characters";
-
+const API = `${process.env.REACT_APP_API_URL}/characters`;
+console.log(API)
 function App() {
   //defining all the states
   const [characters, setCharacters] = useState([]);
